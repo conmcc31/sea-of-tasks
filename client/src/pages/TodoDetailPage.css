@@ -1,0 +1,8 @@
+.detail-container {
+    padding: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.detail-title {
+    text-align: center;
+}
