@@ -1,4 +1,3 @@
-import {useEffect, useState} from "react";
 import {Link, Route, Routes} from "react-router-dom";
 import TodoPage from "./pages/TodoPage";
 import HomePage from "./pages/HomePage";
@@ -10,8 +9,8 @@ export default function App() {
       <>
           <HeaderWave/>
               <nav className="app-nav">
-                  <Link to="/" style={{marginRight: '1rem'}}>Home</Link>
-                  <Link to="/todos" style={{marginRight: '1rem'}}>Todo</Link>
+                  <Link to="/" >Home</Link>
+                  <Link to="/todos" >Tasks</Link>
               </nav>
               <main className="class-main">
                   <Routes>

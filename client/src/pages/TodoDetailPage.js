@@ -1,8 +1,11 @@
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+import {toast, ToastContainer} from "react-toastify";
 import './TodoDetailPage.css'
 
 export default function TodoDetailPage() {
+    const notify = () => toast('Task Updated');
+
     const navigate = useNavigate();
     const {id} = useParams();
 
@@ -32,7 +35,7 @@ export default function TodoDetailPage() {
             }
         };
         fetchTodo();
-    },[id]);
+    }, [id]);
     const handleSave = async (e) => {
         e.preventDefault();
         try {
@@ -41,7 +44,7 @@ export default function TodoDetailPage() {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({text, completed}),
             });
-            if (!res.ok){
+            if (!res.ok) {
                 console.error('Failed to update todo');
                 return;
             }
@@ -49,6 +52,7 @@ export default function TodoDetailPage() {
             setTodo(updated);
             setText(updated.text);
             setCompleted(updated.completed)
+            notify();
         } catch (err) {
             console.error(err);
         }
@@ -70,43 +74,52 @@ export default function TodoDetailPage() {
         }
     };
     if (status === 'loading') {
-        return <p>Loading todo...</p>
+        return <p>Loading task...</p>
     }
     if (status === 'error' || !todo) {
-        return(
+        return (
             <div>
-                <p>Could not load todo</p>
+                <p>Could not load task</p>
                 <Link to={"/todos"}>Back to list</Link>
             </div>
         )
     }
     return (
         <div className="detail-container">
-            <h1 className="detail-title">Todo Details</h1>
+            <h1 className="detail-title">Task Details</h1>
             <form onSubmit={handleSave} style={{marginBottom: '1rem'}}>
-                <div>
-                    <label>
-                        Text: {' '}
-                        <input
-                            value={text} onChange={(e) => setText(e.target.value)}
-                        />
-                    </label>
+                <div className="detail-edit">
+                    <p>Task name</p>
+                    <p>Completed</p>
+                    <div>
+                        <label>
+                            {' '}
+                            <input className="detail-label"
+                                   value={text} onChange={(e) => setText(e.target.value)}
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            {' '}
+                            <input
+                                type="checkbox"
+                                checked={completed}
+                                onChange={(e) => setCompleted(e.target.checked)}
+                            />
+                        </label>
+                    </div>
+                    <div className="detail-buttons">
+                        <button  type="submit">Save Changes
+                        </button>
+                        <button  onClick={handleDelete} style={{marginRight: '1rem'}}>Delete Task
+                        </button>
+                        <ToastContainer></ToastContainer>
+                    </div>
                 </div>
-                <div>
-                    <label>
-                        Completed: {' '}
-                        <input
-                            type="checkbox"
-                            checked={completed}
-                            onChange={(e) => setCompleted(e.target.checked)}
-                        />
-                    </label>
-                </div>
-                <button type="submit">Save Changes
-                </button>
+
             </form>
-            <button onClick={handleDelete} style={{marginRight: '1rem'}}>Delete Todo
-            </button>
+
             <Link to="/todos">Back to list</Link>
 
         </div>

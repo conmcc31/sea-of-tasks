@@ -1,0 +1,14 @@
+.home-page {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 1.5rem 0 3rem;
+    color: #1f2933;
+}
+.home-page-title {
+    padding-bottom: 1rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.home-page-description {
+    font-weight: 500;
+}

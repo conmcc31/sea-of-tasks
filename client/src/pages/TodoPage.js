@@ -106,7 +106,7 @@ export default function TodoPage() {
         return (
             <div className="todos-page">
                 <header className="todos-header">
-                    <h1>Todos</h1>
+                    {/*<h1>Todos</h1>*/}
                 </header>
                 <div className="todos-loading">
                     <div className="todos-loading-spinner" />

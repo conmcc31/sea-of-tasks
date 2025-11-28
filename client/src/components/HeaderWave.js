@@ -1,9 +1,13 @@
+import {Link} from "react-router-dom";
+
 export default function HeaderWave() {
     return (
         <div className="header-div">
             <header className="header-wave">
                 <div className="header-inner">
+                    <Link className="header-title-link" to={`/`}>
                     <h1 className="header-title">Sea of Tasks</h1>
+                    </Link>
                 </div>
             </header>
             <div className="header-svg-wrapper">

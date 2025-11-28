@@ -1,13 +1,16 @@
 .todos-page {
-    max-width: 900px;
+    max-width: 90%;
     margin: 0 auto;
     padding: 1.5rem 0 3rem;
     color: #1f2933;
 }
 
 .todos-header h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 0.25rem;
+    padding-bottom: 1rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .todos-header p {
@@ -21,9 +24,9 @@
     gap: 0.5rem;
     margin-bottom: 1.5rem;
 }
-
-.form-stack {
-    display: grid;
+.todos-form p{
+    font-weight: lighter;
+    font-size: 14px;
 }
 
 .todos-input {
@@ -182,7 +185,6 @@
     gap: 0.75rem;
 }
 
-/* Status pill */
 .todo-status {
     font-size: 0.75rem;
     padding: 0.2rem 0.55rem;
