@@ -80,48 +80,49 @@ export default function TodoDetailPage() {
         return (
             <div>
                 <p>Could not load task</p>
-                <Link to={"/todos"}>Back to list</Link>
+                <Link to={"/"}>Back to list</Link>
             </div>
         )
     }
     return (
         <div className="detail-container">
             <h1 className="detail-title">Task Details</h1>
-            <form onSubmit={handleSave} style={{marginBottom: '1rem'}}>
-                <div className="detail-edit">
-                    <p>Task name</p>
-                    <p>Completed</p>
-                    <div>
-                        <label>
-                            {' '}
-                            <input className="detail-label"
-                                   value={text} onChange={(e) => setText(e.target.value)}
-                            />
-                        </label>
+            <form onSubmit={handleSave}>
+                <div className="detail-grid">
+                    <div className="text-button-div">
+                        <p className="label-div-task-name">Task Name</p>
+                        <p className="label-div-completed">Completed?</p>
                     </div>
-                    <div>
-                        <label>
-                            {' '}
+                    <div></div>
+                    <div className="text-button-div">
+                        <input
+                            type="text"
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                            className="text-button-textbox"
+                            placeholder="Update name..."
+                        />
+
+                        {/* Checkbox positioned inside input */}
+                        <div className="text-button-button">
                             <input
                                 type="checkbox"
                                 checked={completed}
                                 onChange={(e) => setCompleted(e.target.checked)}
+                                className="h-5 w-5 cursor-pointer"
                             />
-                        </label>
+                        </div>
                     </div>
                     <div className="detail-buttons">
-                        <button  type="submit">Save Changes
+                        <button type="submit">Save Changes
                         </button>
-                        <button  onClick={handleDelete} style={{marginRight: '1rem'}}>Delete Task
+                        <button onClick={handleDelete} style={{marginRight: '1rem'}}>Delete Task
                         </button>
                         <ToastContainer></ToastContainer>
                     </div>
+                    <Link className="return-link" to="/">Back to list</Link>
                 </div>
-
             </form>
-
-            <Link to="/todos">Back to list</Link>
-
         </div>
     )
 }

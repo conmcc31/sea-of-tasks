@@ -106,7 +106,6 @@ export default function TodoPage() {
         return (
             <div className="todos-page">
                 <header className="todos-header">
-                    {/*<h1>Todos</h1>*/}
                 </header>
                 <div className="todos-loading">
                     <div className="todos-loading-spinner" />
@@ -118,7 +117,7 @@ export default function TodoPage() {
     return (
         <div className="todos-page">
             <header className="todos-header">
-                <h1>Todos</h1>
+                <h1>Tasks</h1>
             </header>
             <form className="todos-form" onSubmit={onSubmit}>
                 <p>Task name</p>
@@ -127,10 +126,10 @@ export default function TodoPage() {
                 <input className="todos-input"
                        value={text}
                        onChange={(e) => setText(e.target.value)}
-                       placeholder="New Todo"
+                       placeholder="New Task"
                 />
                 <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)}/>
-                <button className="todos-add-button" type="submit">Create Todo Task</button>
+                <button className="todos-add-button" type="submit">Create Task</button>
             </form>
             <section className="todos-grid todos-grid--loaded">
                 {todos.length === 0 && (
@@ -177,7 +176,7 @@ export default function TodoPage() {
                                 }`}>
                                 {t.completed ? 'Completed' : 'Open'}
                             </span>
-                                        <Link to={`/todos/${t._id}`} className="todo-card-link">
+                                        <Link to={`/tasks/${t._id}`} className="todo-card-link">
                                             View Details
                                         </Link>
                                     </div>
